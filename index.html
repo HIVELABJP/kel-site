@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コネクタメーカー｜ケル株式会社 KEL ― 見えない場所で、世界を動かす。</title>
+<meta name="description" content="コネクタを作り続けて60余年。R&D・一貫生産体制・柔軟な対応力（K-ELements）で、産業機器・車載・画像・医療・遊技の現場を支えるコネクタメーカー、ケル株式会社。">
+<style>
+  :root{
+    --paper:#ffffff; --paper2:#f6f3ed; --beige:#ece5d8; --ink:#2a2723; --ink2:#8a8175;
+    --line:#e9e3d7; --rust:#9c5736; --rust2:#b06b45; --max:1240px;
+    --sans:"Helvetica Neue","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:2;font-weight:300;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 48px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;color:var(--rust);font-weight:500;text-transform:uppercase}
+  .disp{font-weight:300;letter-spacing:.02em;line-height:1.32}
+  h2.sec{font-weight:500;font-size:clamp(31px,4.1vw,48px);line-height:1.35;letter-spacing:.03em}
+  h2.sec b{font-weight:700}
+  .mut{color:var(--ink2)}
+  .jp{font-size:13.5px;color:#6f6759;line-height:2.15;font-weight:300}
+  .link{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.1em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px;transition:.25s}
+  .link:hover{color:var(--rust);border-color:var(--rust)}
+  .link.rust{color:var(--rust);border-color:var(--rust)}
+
+  /* header */
+  header{position:fixed;top:0;left:0;right:0;z-index:60;transition:.35s;color:#fff}
+  header.solid{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);color:var(--ink);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+  nav.wrap{max-width:none;margin:0;padding:0 clamp(28px,4.5vw,80px)}
+  .brand{display:flex;align-items:center}
+  .brand svg{height:26px;width:auto;display:block;color:#fff;transition:.35s}
+  header.solid .brand svg{color:#1C9BD8}
+  .menu{display:flex;gap:34px;font-size:15px;letter-spacing:.06em;font-weight:600}
+  .menu a{opacity:.95}.menu a:hover{opacity:.5}
+  .nav-r{display:flex;gap:20px;font-size:14.5px;letter-spacing:.1em;align-items:center;font-weight:600}
+  .nav-r .search{display:flex;align-items:center;gap:8px;border:1px solid currentColor;border-radius:999px;padding:8px 10px 8px 16px;opacity:.9;transition:.25s}
+  .nav-r .search:focus-within{opacity:1}
+  .nav-r .search input{background:transparent;border:none;outline:none;color:inherit;font-size:13px;width:104px;font-family:inherit;font-weight:500;letter-spacing:.04em}
+  .nav-r .search input::placeholder{color:currentColor;opacity:.6}
+  .nav-r .search button{background:none;border:none;color:inherit;font-size:18px;cursor:pointer;line-height:1;padding:0;display:flex}
+
+  /* hero */
+  .hero{position:relative;height:100vh;min-height:660px;overflow:hidden}
+  .hero video.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,26,22,.32),rgba(30,26,22,.05) 40%,rgba(30,26,22,.42))}
+  .hero-in{position:absolute;left:0;right:0;bottom:11%;z-index:3;color:#fff;max-width:none;margin:0;padding:0 0 0 clamp(28px,4.5vw,80px)}
+  .hero h1{font-weight:500;font-size:clamp(43px,7.7vw,98px);line-height:1.14;letter-spacing:.04em}
+  .hero h1 b{font-weight:700}
+  .hero .sub{margin-top:22px;font-size:16.8px;letter-spacing:.05em;color:rgba(255,255,255,.95);font-weight:500}
+  .hero-actions{display:flex;align-items:center;gap:28px;margin-top:38px;flex-wrap:wrap}
+  .hero-pill{border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:999px;padding:13px 24px;font-size:12px;letter-spacing:.08em;display:inline-flex;gap:12px;align-items:center;transition:.25s;cursor:pointer}
+  .hero-pill:hover{background:#fff;color:var(--ink)}
+  .hero-progress{display:flex;gap:8px;z-index:4}
+  .hero-progress i{width:32px;height:2px;background:rgba(255,255,255,.4);overflow:hidden;position:relative}
+  .hero-progress i b{position:absolute;inset:0;width:0;background:#fff;display:block}
+
+  section{padding:150px 0}
+  .reveal{opacity:0;transform:translateY(26px);transition:1s cubic-bezier(.2,.7,.2,1)}.reveal.in{opacity:1;transform:none}
+
+  /* ABOUT — offset heading + single image (Visionary Life Creator) */
+  .vis{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:stretch}
+  .vis .l{display:flex;flex-direction:column}
+  .vis .l h2{margin:18px 0 0}
+  .vis .l .body{margin-top:auto;max-width:400px}
+  .vis .r{position:relative;display:flex;flex-direction:column}
+  .vis .r img{width:100%;display:block}
+  .vis .r .cap{margin-top:14px;font-size:11px;color:var(--ink2);text-align:right;letter-spacing:.05em;line-height:1.7}
+
+  /* BRAND STORY full bleed (K-ELements intro) */
+  .story{position:relative;height:88vh;min-height:560px;overflow:hidden;display:flex;align-items:center;padding:0}
+  .story img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .story::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.05),transparent 45%,rgba(30,26,22,.42))}
+  .story .sc{position:relative;z-index:3;margin-left:auto;width:44%;color:#fff}
+  .story h2{color:#fff}
+  .story p{margin-top:18px;font-size:13px;line-height:2.1;color:rgba(255,255,255,.9);font-weight:300}
+  .story .link{color:#fff;border-color:rgba(255,255,255,.6);margin-top:28px}.story .link:hover{color:#fff;border-color:#fff}
+
+  /* PRINCIPLE cards (3 elements) */
+  .principle{background:var(--paper2)}
+  .pr-head{max-width:680px}
+  .pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:52px;margin-top:70px}
+  .pr .ic{width:54px;height:54px;border:1px solid var(--rust);border-radius:50%;display:grid;place-items:center;color:var(--rust);font-size:20px;margin-bottom:24px}
+  .pr .el{font-size:10px;letter-spacing:.18em;color:var(--rust);font-weight:600}
+  .pr h3{font-weight:400;font-size:19px;margin:10px 0 14px;line-height:1.5}
+  .pr p{font-size:12.5px;color:#6f6759;line-height:2}
+
+  /* PRODUCTION flow — light minimal */
+  .prodimg{width:100%;aspect-ratio:24/9;object-fit:cover;display:block;margin-top:54px}
+  .steps{display:grid;grid-template-columns:repeat(6,1fr);margin-top:0;border-top:1px solid var(--line)}
+  .step{padding:30px 22px;border-right:1px solid var(--line)}
+  .step:last-child{border-right:none}
+  .step .n{font-size:13px;color:var(--rust);letter-spacing:.1em;font-weight:600}
+  .step b{display:block;font-weight:700;font-size:19px;margin:10px 0 2px}
+  .step span{font-size:12px;color:var(--ink2);letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  .step p{font-size:11.5px;color:#6f6759;margin-top:10px;line-height:1.75}
+
+  /* MARKETS staggered (Life flows) */
+  .mhead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:62px;flex-wrap:wrap;gap:14px}
+  .mgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;align-items:start}
+  .market .ph{overflow:hidden}
+  .market .ph img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:.8s}
+  .market:hover .ph img{transform:scale(1.05)}
+  .market.off{margin-top:64px}
+  .market .mm{margin-top:16px}
+  .market .mm .k{font-size:10px;letter-spacing:.14em;color:var(--rust);text-transform:uppercase}
+  .market .mm b{display:block;font-weight:500;font-size:15px;margin-top:6px;line-height:1.5}
+  .market .mm span{font-size:11px;color:var(--ink2)}
+
+  /* PRODUCTS grid (Stories Behind) */
+  .phead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:14px}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 30px}
+  .prod-c .ph{overflow:hidden}
+  .prod-c .ph img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:.8s}
+  .prod-c:hover .ph img{transform:scale(1.05)}
+  .prod-c .pc{margin-top:16px}
+  .prod-c .pc .k{font-size:10px;letter-spacing:.14em;color:var(--rust);text-transform:uppercase}
+  .prod-c .pc b{display:block;font-weight:500;font-size:16px;margin:6px 0 3px}
+  .prod-c .pc span{font-size:12px;color:var(--ink2)}
+
+  /* GLOBAL */
+  .global{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .global img{width:100%;display:block}
+  .bases{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+  .bases span{border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:12px;color:var(--ink2)}
+  .nums{display:flex;gap:40px;margin-top:36px;flex-wrap:wrap}
+  .nums .n{font-size:34px;font-weight:200;color:var(--rust);line-height:1}
+  .nums small{font-size:14px}
+  .nums .t{font-size:11px;color:var(--ink2);margin-top:6px;letter-spacing:.04em}
+
+  /* NEWS */
+  .news{background:var(--paper2)}
+  .nhead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
+  .nrow{display:flex;gap:26px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .nrow time{color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:.03em}
+  .nrow .cat{font-size:10px;letter-spacing:.1em;border:1px solid var(--rust);color:var(--rust);border-radius:999px;padding:3px 13px;white-space:nowrap}
+  .nrow a{flex:1;font-weight:300}.nrow a:hover{color:var(--rust)}
+
+  /* CONTACT */
+  .contact{text-align:center}
+  .contact h2{margin-bottom:10px}
+  .cform{max-width:780px;margin:50px auto 0;text-align:left}
+  .cform .grp{margin-bottom:34px}
+  .cform .gh{font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--ink);border-bottom:2px solid var(--rust);padding-bottom:12px;margin-bottom:8px}
+  .cform .row{display:grid;grid-template-columns:210px 1fr;gap:20px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
+  .cform .row .lab{font-size:13px;font-weight:700;padding-top:11px}
+  .cform .req{font-size:10px;font-weight:700;color:#fff;background:var(--rust);border-radius:3px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+  .cform input[type=text],.cform input[type=email],.cform textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14px;font-family:inherit;background:#fff;color:var(--ink)}
+  .cform textarea{min-height:120px;resize:vertical}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--rust)}
+  .cform .checks{display:flex;gap:20px;flex-wrap:wrap;padding-top:9px}
+  .cform .checks label{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px}
+  .cform .note{font-size:11px;color:var(--ink2);margin-top:7px;line-height:1.7}
+  .cform .agree{text-align:center;margin:30px 0 0}
+  .cform .submit{display:block;margin:28px auto 0;background:var(--rust);color:#fff;font-weight:800;font-size:15px;letter-spacing:.06em;border:none;border-radius:999px;padding:16px 64px;cursor:pointer;transition:.25s}
+  .cform .submit:hover{background:var(--rust2)}
+  @media(max-width:680px){.cform .row{grid-template-columns:1fr;gap:6px}.cform .row .lab{padding-top:0}}
+
+  /* footer */
+  footer{background:var(--paper2);color:var(--ink);padding:96px 0 40px;border-top:1px solid var(--line)}
+  .fbrand{font-weight:700;letter-spacing:.2em;font-size:15px}
+  .fbig{font-weight:200;font-size:clamp(30px,5.2vw,64px);letter-spacing:.04em;margin-top:14px;line-height:1.1}
+  .fcols{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-top:54px;font-size:12px}
+  .fcols h4{color:var(--rust);font-size:10px;letter-spacing:.16em;margin-bottom:14px;text-transform:uppercase}
+  .fcols a{display:block;padding:5px 0;color:#6f6759}.fcols a:hover{color:var(--ink)}
+  .social{display:flex;gap:12px;margin-top:16px}
+  .social a{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:10px;color:var(--ink2)}
+  .social a:hover{border-color:var(--rust);color:var(--rust)}
+  .family{display:inline-flex;justify-content:space-between;gap:30px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:9px 20px;font-size:11px;letter-spacing:.08em;color:var(--ink2);min-width:180px}
+  .fbottom{margin-top:54px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;color:var(--ink2);letter-spacing:.03em}
+  .badge{position:fixed;right:18px;bottom:18px;z-index:70;background:var(--rust);color:#fff;font-weight:500;font-size:11px;letter-spacing:.06em;padding:9px 15px;border-radius:999px}
+
+  @media(max-width:980px){
+    .wrap{padding:0 24px}.menu{display:none}
+    .vis{grid-template-columns:1fr;gap:24px}.vis .l .body{margin-top:24px}
+    .story .sc{width:auto;padding:0 24px}.story::after{background:linear-gradient(180deg,rgba(30,26,22,.2),rgba(30,26,22,.55))}
+    .pr-grid{grid-template-columns:1fr;gap:40px}.steps{grid-template-columns:1fr 1fr}.step{border-bottom:1px solid var(--line)}
+    .mgrid{grid-template-columns:1fr 1fr}.market.off{margin-top:0}
+    .pgrid{grid-template-columns:1fr}.global{grid-template-columns:1fr;gap:30px}
+    .hero-pill,.hero-progress{right:24px}
+  }
+</style>
+</head>
+<body>
+<header id="hd">
+  <nav class="wrap">
+    <a class="brand" href="#hero" aria-label="KEL ケル株式会社">
+      <svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" aria-label="KEL">
+        <rect x="14" y="12" width="26" height="86"/>
+        <polygon points="96,12 138,12 74,55 52,55"/>
+        <polygon points="96,98 138,98 74,55 52,55"/>
+        <rect x="160" y="12" width="26" height="86"/>
+        <rect x="160" y="12" width="86" height="22"/>
+        <rect x="160" y="44" width="70" height="22"/>
+        <rect x="160" y="76" width="86" height="22"/>
+        <rect x="270" y="12" width="26" height="86"/>
+        <rect x="270" y="76" width="82" height="22"/>
+      </svg>
+    </a>
+    <div class="menu">
+      <a href="#about">ケルについて</a><a href="#search">製品情報</a><a href="#kelements">ケルの強み</a>
+      <a href="#markets">市場・用途</a><a href="#news">ニュース</a><a href="#company">会社情報</a>
+    </div>
+    <div class="nav-r"><a href="#recruit">採用</a><span>JP / EN</span><form class="search" onsubmit="return false"><input type="text" placeholder="検索" aria-label="サイト内検索"><button type="submit" aria-label="検索">⌕</button></form></div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <video class="bg" id="heroVideo" autoplay muted playsinline preload="auto" poster="assets/hf_20260622_081234_1bc8dda2-3fd2-406f-af5b-d35bec32f695.png"></video>
+  <div class="wrap hero-in">
+    <h1>見えない場所で、<br><b>世界</b>を動かす。</h1>
+    <p class="sub">60余年にわたり磨き続けた接続技術。<br>その安心と信頼が、次世代の産業を支えています。</p>
+    <div class="hero-actions">
+      <a class="hero-pill" href="#search">製品情報を見る ↗</a>
+      <div class="hero-progress" id="heroProg" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT (Visionary Life Creator layout) -->
+<section id="about"><div class="wrap vis">
+  <div class="l reveal">
+    <div class="eyebrow">About KEL</div>
+    <h2 class="sec">陰で支える、<b>主役。</b></h2>
+    <div class="body">
+      <p class="jp">表には見えない。<br>けれど、なくてはならない。<br>ケルが手がけるのは、機器の内部であらゆる機能をつなぐコネクタです。<br>私たちの暮らしや産業を支える製品の多くに、ケルの技術が息づいています。<br>見えない場所で、社会を動かす。<br>それが、ケルのコネクタです。</p>
+      <div style="margin-top:24px"><a class="link" href="#kelements">ケルの強みを見る ↗</a></div>
+    </div>
+  </div>
+  <div class="r reveal">
+    <img src="assets/hf_20260622_081234_1bc8dda2-3fd2-406f-af5b-d35bec32f695.png" alt="高精度コネクタ">
+    <div class="cap">高品質・小型化・高機能化。<br>次世代産業機器の要望に、最先端技術でお応えします。</div>
+  </div>
+</div></section>
+
+<!-- BRAND STORY full bleed (K-ELements intro) -->
+<section class="story" id="kelements">
+  <img src="assets/hf_20260623_050926_46ddf98e-a6db-46f6-9dae-1920672fdc96.png" alt="">
+  <div class="wrap" style="position:relative;z-index:3;width:100%">
+    <div class="sc reveal">
+      <div class="eyebrow" style="color:rgba(255,255,255,.85)">Brand Story ― K-ELements</div>
+      <h2 class="sec" style="margin-top:14px;white-space:nowrap">KEL を支える、<b>要素。</b></h2>
+      <p>Elements――それは、KELを形づくる要素。<br>R&D、一貫生産、そして柔軟な対応力。<br>この3つの強みが、KELならではの付加価値を生み出し、お客様の多様なニーズに応える製品開発を支えています。</p>
+      <a class="link" href="#">K-ELements を読む ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLE cards (3 elements) -->
+<section class="principle"><div class="wrap">
+  <div class="pr-head reveal"><div class="eyebrow">ケルの強み</div><h2 class="sec" style="margin-top:14px;white-space:nowrap">構想を現実へ導く、<b>3つの強み。</b></h2></div>
+  <div class="pr-grid">
+    <div class="pr reveal"><div class="ic">◇</div><div class="el">Element 01 — R&D</div><h3>高性能・高品質を追求する<br>研究開発力</h3><p>本社内に研究開発部門を構え、営業が集約したお客様のニーズを迅速に技術開発へ反映。<br>最先端技術の創出と積極的な技術提案を通じて、新たな価値を生み出します。<br>継続的な研究開発こそが、KELの未来を支える原動力です。</p></div>
+    <div class="pr reveal"><div class="ic">◎</div><div class="el">Element 02 — Production</div><h3>品質と安定供給を支える<br>一貫生産体制</h3><p>プレス・メッキ・成形から組立・検査まで、すべての工程を自社内で完結。<br>長年培った一貫生産体制により、高い品質と安定した供給を実現しています。<br>汎用性の高い自動組立ラインを活用し、多品種少量生産や特注品にも柔軟に対応します。</p></div>
+    <div class="pr reveal"><div class="ic">○</div><div class="el">Element 03 — Flexibility</div><h3>品質と安定供給を支える<br>一貫生産体制</h3><p>豊富な製品知識を持つ営業と開発部門が密接に連携し、お客様の課題に寄り添った提案を実施。<br>コネクタ単体にとどまらず、特注ハーネスやカスタムラックまで含めたトータルソリューションを提供し、構想から実装まで一貫してサポートします。</p></div>
+  </div>
+</div></section>
+
+<!-- PRODUCTION FLOW -->
+<section id="production"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">一貫生産体制</div><h2 class="sec" style="margin-top:14px">部材調達から組立まで、<b>すべて自社内で。</b></h2></div>
+</div>
+<video class="prodimg reveal" autoplay muted loop playsinline poster="assets/hf_20260622_081522_94e16168-d638-47c7-9e94-01422b13634d.png">
+  <source src="assets/hf_20260622_084237_cc77952d-8ebc-4273-b024-5e71d4a073c9.mp4" type="video/mp4">
+</video>
+<div class="wrap">
+  <div class="steps reveal">
+    <div class="step"><div class="n">01</div><b>プレス</b><span>Stamping</span><p>金属材を高精度なコンタクトに加工。</p></div>
+    <div class="step"><div class="n">02</div><b>メッキ</b><span>Plating</span><p>鉛フリー対応で金・錫の表面処理。</p></div>
+    <div class="step"><div class="n">03</div><b>成形</b><span>Molding</span><p>画像検査付き成形機で部品を加工。</p></div>
+    <div class="step"><div class="n">04</div><b>組立</b><span>Assembly</span><p>万全の管理体制で高速・高品質生産。</p></div>
+    <div class="step"><div class="n">05</div><b>検査</b><span>Inspection</span><p>電気的試験・出荷検査で品質保証。</p></div>
+    <div class="step"><div class="n">06</div><b>出荷</b><span>Shipment</span><p>梱包・出荷し、お客様のお手元へ。</p></div>
+  </div>
+</div></section>
+
+<!-- MARKETS staggered -->
+<section id="markets"><div class="wrap">
+  <div class="mhead reveal"><div><div class="eyebrow">市場に広がるケル製品</div><h2 class="sec" style="margin-top:14px">5つの市場で、<b>暮らしと産業を。</b></h2></div><a class="link" href="#">用途一覧へ ↗</a></div>
+  <div class="mgrid">
+    <a class="market reveal" href="#"><div class="ph"><img src="assets/hf_20260624_104356_380ba74f-6a67-48cf-a69b-944ece7e3ff8.png" alt=""></div><div class="mm"><span class="k">01 / Industrial</span><b>産業機器</b><span>24時間稼働を支える堅牢設計</span></div></a>
+    <a class="market off reveal" href="#"><div class="ph"><img src="assets/hf_20260622_081253_04750180-5182-4b0b-b787-2e9139646433.png" alt=""></div><div class="mm"><span class="k">02 / Automotive</span><b>車載</b><span>EV時代の信頼性を支える</span></div></a>
+    <a class="market reveal" href="#"><div class="ph"><img src="assets/hf_20260622_081255_fb969602-1877-4336-bb83-f99ce388668b.png" alt=""></div><div class="mm"><span class="k">03 / Imaging</span><b>画像</b><span>高速・大容量の映像伝送</span></div></a>
+    <a class="market off reveal" href="#"><div class="ph"><img src="assets/hf_20260622_081254_97c2c01c-9f70-4b0d-a3db-649a9c0e212e.png" alt=""></div><div class="mm"><span class="k">04 / Medical</span><b>医療</b><span>人命の現場に、絶対の信頼性</span></div></a>
+    <a class="market reveal" href="#"><div class="ph"><img src="assets/hf_20260624_104358_df7d184a-b852-45d5-8766-8b791f7129e8.png" alt=""></div><div class="mm"><span class="k">05 / Amusement</span><b>遊技</b><span>多品種・短納期のカスタム対応</span></div></a>
+  </div>
+</div></section>
+
+<!-- PRODUCTS (Stories Behind) -->
+<section id="search"><div class="wrap">
+  <div class="phead reveal"><div><div class="eyebrow">オンリーワン製品を創出</div><h2 class="sec" style="margin-top:14px">創意をもって、<b>差別化できる製品を。</b></h2></div><a class="link" href="#">製品サイトへ ↗</a></div>
+  <div class="pgrid">
+    <a class="prod-c reveal" href="#"><div class="ph"><img src="assets/hf_20260622_081234_1bc8dda2-3fd2-406f-af5b-d35bec32f695.png" alt=""></div><div class="pc"><span class="k">DTシリーズ</span><b>0.5mmピッチ フローティングコネクタ</b><span>高速伝送対応。基板間の位置ズレを吸収。</span></div></a>
+    <a class="prod-c reveal" href="#"><div class="ph"><img src="assets/hf_20260622_074702_99f58883-d2ba-4092-9f8d-0728235728e9.png" alt=""></div><div class="pc"><span class="k">XSLSシリーズ</span><b>0.25mmピッチ 極細同軸ケーブル用コネクタ</b><span>省スペースで高速・大容量の信号伝送。</span></div></a>
+    <a class="prod-c reveal" href="#"><div class="ph"><img src="assets/hf_20260622_081250_c7b44181-7a32-4919-910f-6fdbf75c64ff.png" alt=""></div><div class="pc"><span class="k">FASシリーズ</span><b>1.5mmピッチ ドロワーコネクタ</b><span>操作性と接続信頼性を両立。</span></div></a>
+    <a class="prod-c reveal" href="#"><div class="ph"><img src="assets/hf_20260622_081249_f3f84983-ba74-4bc1-997f-423d8f34ea00.png" alt=""></div><div class="pc"><span class="k">Custom Harness</span><b>特注ハーネス</b><span>実装を考慮した設計から量産まで。</span></div></a>
+    <a class="prod-c reveal" href="#"><div class="ph"><img src="assets/hf_20260622_081401_51127f90-a0a7-4a60-92e4-6d2316536acc.png" alt=""></div><div class="pc"><span class="k">Quality</span><b>品質保証体制</b><span>全数管理で見えない不良を見える化。</span></div></a>
+    <a class="prod-c reveal" href="#"><div class="ph"><img src="assets/hf_20260622_081406_ac94de89-0ed5-4b11-b59c-74f8bd39a3e7.png" alt=""></div><div class="pc"><span class="k">People</span><b>つくる人たち</b><span>挑戦する開発チームの現場。</span></div></a>
+  </div>
+</div></section>
+
+<!-- GLOBAL + numbers -->
+<section class="principle" id="company"><div class="wrap global">
+  <div class="reveal"><img src="assets/hf_20260622_074655_ac0dba60-1d57-49ad-8b0e-606688574a75.png" alt=""></div>
+  <div class="reveal">
+    <div class="eyebrow">Global Network</div>
+    <h2 class="sec" style="margin-top:14px">コネクタから、<b>世界をつなぐ</b></h2>
+    <p class="jp">グローバル化が進む中、ケルの製品は海外でも豊富な実績と高い評価をいただいています。アジアから欧州・北米まで、世界の現場へ確かな接続を届けます。</p>
+    <div class="bases"><span>台湾</span><span>上海</span><span>珠海</span><span>香港</span><span>ドイツ</span><span>北米</span></div>
+    <div class="nums">
+      <div><div class="n">1962</div><div class="t">創業年</div></div>
+      <div><div class="n">145<small>億円</small></div><div class="t">売上高</div></div>
+      <div><div class="n">273<small>名</small></div><div class="t">従業員数</div></div>
+      <div><div class="n">6919</div><div class="t">東証スタンダード</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- NEWS -->
+<section class="news" id="news"><div class="wrap">
+  <div class="nhead reveal"><div><div class="eyebrow">News</div><h2 class="sec" style="margin-top:12px">最新情報</h2></div><a class="link" href="#">ニュース一覧へ ↗</a></div>
+  <div class="reveal">
+    <div class="nrow"><time>2026.06.19</time><span class="cat">IR</span><a href="#">第64回定時株主総会ビジュアル資料を公開しました</a></div>
+    <div class="nrow"><time>2026.06.17</time><span class="cat">IR</span><a href="#">「2026年3月期決算説明会」を開催しました</a></div>
+    <div class="nrow"><time>2026.06.08</time><span class="cat">製品</span><a href="#">「人とくるまのテクノロジー展2026 NAGOYA」出展のご案内</a></div>
+    <div class="nrow"><time>2026.05.20</time><span class="cat">製品</span><a href="#">「人とくるまのテクノロジー展2026 YOKOHAMA」出展のご案内</a></div>
+    <div class="nrow"><time>2026.05.18</time><span class="cat">その他</span><a href="#">電波新聞に当社の記事が掲載されました</a></div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section class="contact"><div class="wrap reveal">
+  <div class="eyebrow" style="text-align:center">Contact</div>
+  <h2 class="sec" style="margin-top:14px">つなぎたい未来を、<b>お聞かせください。</b></h2>
+  <p class="jp" style="max-width:520px;margin:0 auto">製品仕様・お見積り・技術のご相談まで、お気軽にどうぞ。</p>
+
+  <form class="cform" onsubmit="return false">
+    <div class="grp">
+      <div class="gh">お問い合わせ事項</div>
+      <div class="row"><div class="lab">お問い合わせカテゴリ<span class="req">必須</span></div>
+        <div class="checks">
+          <label><input type="checkbox" name="cat"> お見積り</label>
+          <label><input type="checkbox" name="cat"> 納期・在庫</label>
+          <label><input type="checkbox" name="cat"> 製品仕様</label>
+          <label><input type="checkbox" name="cat"> その他</label>
+        </div></div>
+      <div class="row"><div class="lab">お問い合わせ製品・品種<span class="req">必須</span></div>
+        <div><input type="text" placeholder="例）製品・品種"></div></div>
+      <div class="row"><div class="lab">お問い合わせ内容<span class="req">必須</span></div>
+        <div><textarea placeholder="お問い合わせ内容をご記入ください"></textarea>
+          <div class="note">※具体的な内容をご記入ください。弊社担当部署よりご希望の内容に応じて、ご連絡させていただきます。</div></div></div>
+    </div>
+    <div class="grp">
+      <div class="gh">お客様情報</div>
+      <div class="row"><div class="lab">お名前<span class="req">必須</span></div><div><input type="text" placeholder="例）山田太郎"></div></div>
+      <div class="row"><div class="lab">フリガナ<span class="req">必須</span></div><div><input type="text" placeholder="例）ヤマダタロウ"></div></div>
+      <div class="row"><div class="lab">会社名（団体名）<span class="req">必須</span></div><div><input type="text" placeholder="例）ケル株式会社"></div></div>
+      <div class="row"><div class="lab">所属部署<span class="req">必須</span></div><div><input type="text" placeholder="例）○○部署"></div></div>
+      <div class="row"><div class="lab">役職<span class="req">必須</span></div><div><input type="text" placeholder="例）部長"></div></div>
+      <div class="row"><div class="lab">郵便番号<span class="req">必須</span></div><div><input type="text" placeholder="例）000-0000"></div></div>
+      <div class="row"><div class="lab">住所<span class="req">必須</span></div><div><input type="text" placeholder="例）東京都○○区××"></div></div>
+      <div class="row"><div class="lab">メールアドレス<span class="req">必須</span></div><div><input type="email" placeholder="例）info@kel.co.jp"></div></div>
+      <div class="row"><div class="lab">メールアドレス（確認）<span class="req">必須</span></div><div><input type="email" placeholder="例）info@kel.co.jp"></div></div>
+      <div class="row"><div class="lab">電話番号<span class="req">必須</span></div><div><input type="text" placeholder="例）03-1234-5678"><div class="note">市外局番からご記入ください。</div></div></div>
+    </div>
+    <div class="agree">
+      <p class="note" style="text-align:center;font-size:13px">個人情報の取扱いについては「<a href="#" style="color:var(--rust);text-decoration:underline">プライバシーポリシー</a>」をご覧ください。ご同意いただける方は下の「同意する」をチェックしてください。</p>
+      <label style="display:inline-flex;gap:7px;align-items:center;margin-top:12px;font-weight:700;font-size:14px"><input type="checkbox"> 同意する<span class="req">必須</span></label>
+    </div>
+    <button class="submit" type="submit">確認</button>
+  </form>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand" style="display:flex;align-items:center;gap:14px">
+      <svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" fill="#1C9BD8" role="img" aria-label="KEL" style="height:30px;width:auto">
+        <rect x="14" y="12" width="26" height="86"/>
+        <polygon points="96,12 138,12 74,55 52,55"/>
+        <polygon points="96,98 138,98 74,55 52,55"/>
+        <rect x="160" y="12" width="26" height="86"/>
+        <rect x="160" y="12" width="86" height="22"/>
+        <rect x="160" y="44" width="70" height="22"/>
+        <rect x="160" y="76" width="86" height="22"/>
+        <rect x="270" y="12" width="26" height="86"/>
+        <rect x="270" y="76" width="82" height="22"/>
+      </svg>
+      <span style="font-size:13px;letter-spacing:.06em;color:var(--ink2)">ケル株式会社</span>
+    </div>
+    <div class="fbig">見えない場所で、世界を動かす。</div>
+    <div class="fcols">
+      <div><h4>製品情報</h4><a href="#">製品サイト</a><a href="#">カテゴリーから探す</a><a href="#">アプリケーションから探す</a><a href="#">条件から探す</a><a href="#">代理店一覧</a></div>
+      <div><h4>ケルについて</h4><a href="#">オンリーワン製品を創出</a><a href="#">市場に広がるケル製品</a><a href="#">ケルの強み K-ELements</a></div>
+      <div><h4>会社情報</h4><a href="#">会社概要</a><a href="#">トップメッセージ</a><a href="#">事業概要</a><a href="#">環境情報</a></div>
+      <div><h4>IR情報</h4><a href="#">IRニュース</a><a href="#">財務ハイライト</a><a href="#">IRライブラリー</a><a href="#">株式について</a></div>
+      <div><h4>Connect</h4><a href="#">採用サイト</a><a href="#">お問い合わせ</a><a href="#">FAQ</a>
+        <div class="social"><a href="#" title="YouTube">YT</a><a href="#" title="X">X</a><a href="#" title="LinkedIn">in</a></div>
+      </div>
+    </div>
+    <div style="margin-top:40px"><span class="family">Family Site　＋</span></div>
+    <div class="fbottom"><span>© 2026 KEL Corporation.　東京都多摩市永山6-17-7　証券コード 6919（東証スタンダード）</span><span>Renewal Proposal — IPARK-styled / 日本語</span></div>
+  </div>
+</footer>
+
+<script>
+  const hd=document.getElementById('hd');
+  addEventListener('scroll',()=>{hd.classList.toggle('solid',scrollY>window.innerHeight-90)});
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // HERO: 6 generated videos sequential loop
+  (function(){
+    const B="assets/";
+    const playlist=[
+      "hf_20260622_084234_286fddec-8717-49d4-ac08-b82135bc12e3.mp4",
+      "hf_20260622_084237_cc77952d-8ebc-4273-b024-5e71d4a073c9.mp4",
+      "hf_20260623_024550_a9b82819-32e7-4b47-ab28-cc77fcb49330.mp4",
+      "hf_20260622_084241_75abba84-d208-457c-bced-591d42638a67.mp4",
+      "hf_20260622_084244_7fdd757f-e6bf-4839-8509-8d19d3664826.mp4"
+    ];
+    const v=document.getElementById('heroVideo'), prog=document.getElementById('heroProg');
+    playlist.forEach(()=>{const i=document.createElement('i');i.innerHTML='<b></b>';prog.appendChild(i)});
+    const segs=[...prog.children]; let idx=0;
+    function mark(){segs.forEach((s,i)=>{const b=s.querySelector('b');if(i!==idx){b.style.transition='none';b.style.width=(i<idx?'100%':'0')}});}
+    function load(i){idx=i;v.src=B+playlist[i];v.play().catch(()=>{});}
+    v.addEventListener('loadedmetadata',()=>{
+      mark(); const b=segs[idx].querySelector('b');
+      b.style.transition='none'; b.style.width='0';
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{b.style.transition='width '+(v.duration||5)+'s linear';b.style.width='100%';}));
+    });
+    v.addEventListener('ended',()=>load((idx+1)%playlist.length));
+    load(0);
+  })();
+</script>
+</body>
+</html>
