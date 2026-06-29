@@ -9,3 +9,4 @@ node_modules/
 
 # build output (redundant copy)
 dist/
+.vercel
